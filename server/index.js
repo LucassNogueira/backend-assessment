@@ -3,6 +3,12 @@ const cors = require("cors");
 
 const app = express();
 
+const fortunes = [
+  "A beautiful, smart, and loving person will be coming into your life.",
+  "A dubious friend may be an enemy in camouflage.",
+  "A hunch is creativity trying to tell you something.",
+];
+
 app.use(cors());
 
 app.use(express.json()); // When we want to be able to accept JSON.
@@ -22,20 +28,6 @@ app.get("/api/compliment", (req, res) => {
 });
 
 app.get("/api/fortune", (req, res) => {
-  const fortunes = [
-    "A beautiful, smart, and loving person will be coming into your life.",
-    "A dubious friend may be an enemy in camouflage.",
-    "A hunch is creativity trying to tell you something.",
-    "A hunch is creativity trying to tell you something.",
-    "A golden egg of opportunity falls into your lap this month.",
-    "Distance yourself from the vain.",
-    "First think of what you want to do; then do what you have to do.",
-    "How you look depends on where you go.",
-    "Let the world be filled with tranquility and goodwill.",
-    "Pennies from heaven find their way to your doorstep this year!",
-    "Now is the time to try something new",
-  ];
-
   let randomFtn = Math.floor(Math.random() * fortunes.length);
   let sendFortune = fortunes[randomFtn];
 
@@ -43,11 +35,49 @@ app.get("/api/fortune", (req, res) => {
 });
 
 let todoListArr = [];
-app.post("/todo", (req, res) => {
-  console.log("hti");
-  const { todo } = res.body;
-  todoListArr.push(todo);
-  console.log(todo);
+let id = 1;
+app.post("/api/todo", (req, res) => {
+  const { task } = req.body;
+  let newTask = {
+    id,
+    task,
+  };
+
+  todoListArr.push(newTask);
+  id++;
+  res.status(200).send(todoListArr);
+});
+
+app.delete("/api/todo/:id", (req, res) => {
+  const toDeleteId = +req.params.id;
+  const targetIndex = todoListArr.findIndex((taskObj) => {
+    return taskObj.id === toDeleteId;
+  });
+
+  const deleting = todoListArr.splice(targetIndex, 1);
+  res.status(200).send([deleting[0], todoListArr]);
+});
+
+app.post("/api/fortune", (req, res) => {
+  const { inputFortune } = req.body;
+  fortunes.push(inputFortune);
+  res.sendStatus(200);
+  console.log(fortunes);
+});
+//
+//
+//
+//
+//
+//
+app.put("/api/todo/:id", (req, res) => {
+  const { id, task } = req.body;
+  let targetId = Number(req.body.id);
+  for (let i = 0; i < todoListArr.length; i++) {
+    if (todoListArr[i].id === targetId) {
+      todoListArr[i].task = task;
+    }
+  }
   res.status(200).send(todoListArr);
 });
 

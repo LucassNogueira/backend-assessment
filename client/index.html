@@ -23,15 +23,26 @@
     <br />
     <br />
     <br />
-    <form>
-      <input type="text" id="todo" placeholder="Enter a task " />
-      <button id="todobtn">Add to list</button>
+    <form id="todo-form">
+      <input type="text" id="todoinput" placeholder="Enter a task " />
+      <button id="todobtn">Add to To-do List</button>
+    </form>
+    <ol id="todo-display"></ol>
+    <form id="edit-todo">
+      <input
+        style="width: 45px"
+        type="text"
+        id="number-input"
+        placeholder="List #"
+      />
+      <input type="text" id="replacement" placeholder="Edit task!" />
+      <button id="submit-edit">Edit</button>
     </form>
     <section></section>
     <br />
     <br />
     <form id="addfortuneform">
-      <input id="addfortune" type='text' placeholder='enter a fortune'">
+      <input id="addfortuneinput" type='text' placeholder='enter a fortune'">
       <button id="fortuneadd">add fortune</button>
     </form>
   </body>
