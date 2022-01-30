@@ -2,12 +2,15 @@
 <html>
   <head>
     <title>Back End Assessment</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body class="container">
     <button id="complimentButton">Get a compliment</button>
     <br />
     <br />
     <button id="fortuneBtn">What's your fortune?</button>
+    <button id="fortuneClr">Clear fortune</button>
+    <br />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="main.js" defer></script>
     <script>
@@ -21,8 +24,14 @@
       };
     </script>
     <br />
+
+    <form id="addfortuneform">
+      <input id="addfortuneinput" type='text' placeholder='enter a fortune'">
+      <button id="fortuneadd">add fortune</button>
+    </form>
+    <div id="fortunecontainer"></div>
     <br />
-    <br />
+
     <form id="todo-form">
       <input type="text" id="todoinput" placeholder="Enter a task " />
       <button id="todobtn">Add to To-do List</button>
@@ -41,9 +50,5 @@
     <section></section>
     <br />
     <br />
-    <form id="addfortuneform">
-      <input id="addfortuneinput" type='text' placeholder='enter a fortune'">
-      <button id="fortuneadd">add fortune</button>
-    </form>
   </body>
 </html>
