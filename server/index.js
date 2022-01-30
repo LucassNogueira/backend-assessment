@@ -81,4 +81,12 @@ app.put("/api/todo/:id", (req, res) => {
   res.status(200).send(todoListArr);
 });
 
+//
+//
+//
+
+app.get("https://dog.ceo/api/breeds/image/random", (req, res) => {
+  const { message, status } = req.body;
+  res.send(message);
+});
 app.listen(4000, () => console.log("Server running on 4000"));
