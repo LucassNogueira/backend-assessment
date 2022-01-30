@@ -7,6 +7,9 @@ const fortunes = [
   "A beautiful, smart, and loving person will be coming into your life.",
   "A dubious friend may be an enemy in camouflage.",
   "A hunch is creativity trying to tell you something.",
+  "A smooth long journey! Great expectations.",
+  "All the effort you are making will ultimately pay off.",
+  "Believe it can be done.",
 ];
 
 app.use(cors());
@@ -88,5 +91,25 @@ app.put("/api/todo/:id", (req, res) => {
 app.get("https://dog.ceo/api/breeds/image/random", (req, res) => {
   const { message, status } = req.body;
   res.send(message);
+});
+
+//
+//
+//
+
+app.get(
+  "https://dog.ceo/api/breed/retriever/golden/images/random",
+  (req, res) => {
+    const { message, status } = req.body;
+    res.send(message);
+  }
+);
+
+//
+//
+//
+
+app.get("https://api.coinbase.com/v2/prices/:currency_pair/buy", (req, res) => {
+  res.status(200).send(req.body);
 });
 app.listen(4000, () => console.log("Server running on 4000"));
